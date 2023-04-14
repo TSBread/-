@@ -1,3 +1,5 @@
+import time
+
 import requests
 import json
 import os
@@ -68,4 +70,6 @@ def checking():
 
 
 if __name__ == '__main__':
+    print("Running...")
+    time.sleep(random.randint(1, 10))
     checking()
