@@ -14,6 +14,7 @@ version_info = requests.get(getGameVersion, timeout=30).text
 version = json.loads(version_info)["data"]["game"]["latest"]["version"]
 
 # 从Action的Repository secrets中获取所填写的Data变量
+print(os.environ.get('Data'))
 playerData = json.loads(os.environ.get('Data'))
 # dataTemp = open('Data.json')
 # playerData = json.loads(dataTemp.readline())
