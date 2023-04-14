@@ -1,4 +1,27 @@
 name: Checking
 
 on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+  push:
+    branches: [main]
 
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Set up Python 3.10
+        use: actions/setup-python@v4
+        with :
+          python-version: 3.10
+
+      - name: Install requirements
+        run: |
+          pip install -r requirements.txt
+      - name: Checking
+        env:
+          config: ${{ secrets.Data }}
+        run: |
+          python3 run.py
