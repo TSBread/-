@@ -11,10 +11,10 @@ accountState = 'https://api-cloudgame.mihoyo.com/hk4e_cg_cn/wallet/wallet/get'
 version_info = requests.get(getGameVersion, timeout=30).text
 version = json.loads(version_info)["data"]["game"]["latest"]["version"]
 
-# 从Action的Environment secrets中获取所填写的Data变量
-# playerData = json.loads(os.environ.get('Data'))
-dataTemp = open('Data.json')
-playerData = json.loads(dataTemp.readline())
+# 从Action的Repository secrets中获取所填写的Data变量
+playerData = json.loads(os.environ.get('Data'))
+# dataTemp = open('Data.json')
+# playerData = json.loads(dataTemp.readline())
 
 headers = {
     "x-rpc-combo_token": playerData["x-rpc-combo_token"],
