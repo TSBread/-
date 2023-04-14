@@ -10,7 +10,7 @@ getGameVersion = f'https://sdk-static.mihoyo.com/hk4e_cn/mdk/launcher/api/resour
 accountState = 'https://api-cloudgame.mihoyo.com/hk4e_cg_cn/wallet/wallet/get'
 
 # 获取当前云原神的版本
-version_info = requests.get(getGameVersion, timeout=30).text
+version_info = requests.get(getGameVersion, timeout=60).text
 version = json.loads(version_info)["data"]["game"]["latest"]["version"]
 
 # 从Action的Repository secrets中获取所填写的Data变量
@@ -50,12 +50,12 @@ def min_transform(value):
 
 def checking():
     # 获取玩家云原神账号状态
-    state = json.loads(requests.get(accountState, headers=headers, timeout=30).text)
+    state = json.loads(requests.get(accountState, headers=headers, timeout=60).text)
     free_time = state["data"]["free_time"]["free_time"]
     free_time_limit = state["data"]["free_time"]["free_time_limit"]
     percent = (int(free_time) / int(free_time_limit)) * 100
     coin = state["data"]["coin"]["coin_num"]
-    detect = json.loads(requests.get(checkingUrl, headers=headers, timeout=30).text)
+    detect = json.loads(requests.get(checkingUrl, headers=headers, timeout=60).text)
 
     # 签到判断
     if not detect["data"]["list"]:
