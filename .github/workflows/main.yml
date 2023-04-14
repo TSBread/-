@@ -23,6 +23,6 @@ jobs:
           
       - name: Checking
         env:
-          config: ${{ secrets.Data }}
+          Data: ${{ secrets.Data }}
         run: |
           python3 run.py
