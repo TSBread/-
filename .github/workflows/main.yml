@@ -1,4 +1,4 @@
-name: Checking
+name: Main
 
 on:
   workflow_dispatch:
