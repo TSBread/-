@@ -20,7 +20,6 @@ jobs:
       - name: Install requirements
         run: |
           pip install -r requirements.txt -t
-          sudo sh install_dependencies.sh
           
       - name: Checking
         env:
