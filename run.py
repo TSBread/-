@@ -58,19 +58,22 @@ def checking():
     detect = json.loads(requests.get(checkingUrl, headers=headers, timeout=60).text)
 
     # 签到判断
+    print(detect)
+    
     if not detect["data"]["list"]:
         if free_time < free_time_limit:
-            print(f'签到完成\n')
-        if free_time >= free_time_limit:
-            print(f'已达到免费时长上限\n')
-    else:
-        print(f'签到失败\n')
+            print(f'已经签过了\n')
+    elif free_time >= free_time_limit:
+        print(f'已达到时长上限\n')
+    elif detect["data"]["list"]:
+        print(f'已签到\n')
 
     print(
         f'可用时长：{min_transform(free_time)}/{min_transform(free_time_limit)}({int(percent)}%)\n可用米云币：{coin}|{state["data"]["play_card"]["short_msg"]}月卡')
 
 
 if __name__ == '__main__':
-    print("Running...")
+    print("Loading...")
     time.sleep(random.randint(1, 10))
+    print("Running...")
     checking()
