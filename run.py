@@ -74,6 +74,6 @@ def checking():
 
 if __name__ == '__main__':
     print("Loading...")
-    time.sleep(random.randint(1, 10))
+    time.sleep(random.randint(1, 16))
     print("Running...")
     checking()
