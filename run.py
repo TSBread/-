@@ -50,12 +50,18 @@ def min_transform(value):
 
 def checking():
     # 获取玩家云原神账号状态
-    state = json.loads(requests.get(accountState, headers=headers, timeout=60).text)
+    try:
+        state = json.loads(requests.get(accountState, headers=headers, timeout=60).text)
+    expect:
+        pass
     free_time = state["data"]["free_time"]["free_time"]
     free_time_limit = state["data"]["free_time"]["free_time_limit"]
     percent = (int(free_time) / int(free_time_limit)) * 100
     coin = state["data"]["coin"]["coin_num"]
-    detect = json.loads(requests.get(checkingUrl, headers=headers, timeout=60).text)
+    try:
+        detect = json.loads(requests.get(checkingUrl, headers=headers, timeout=60).text)
+    expect:
+        pass
 
     # 签到判断
     print(detect)
