@@ -52,7 +52,7 @@ def checking():
     # 获取玩家云原神账号状态
     try:
         state = json.loads(requests.get(accountState, headers=headers, timeout=60).text)
-    expect:
+    except:
         pass
     free_time = state["data"]["free_time"]["free_time"]
     free_time_limit = state["data"]["free_time"]["free_time_limit"]
@@ -60,7 +60,7 @@ def checking():
     coin = state["data"]["coin"]["coin_num"]
     try:
         detect = json.loads(requests.get(checkingUrl, headers=headers, timeout=60).text)
-    expect:
+    except:
         pass
 
     # 签到判断
